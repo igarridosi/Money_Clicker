@@ -8,7 +8,7 @@ class Objetua {
     }
 
     // Hobekuntza bat erosteko funtzioa
-    buy() {
+    erosi() {
         if (clickKontagailua >= this.cost) {
             clickKontagailua -= this.cost;
             this.count++;
@@ -30,13 +30,18 @@ let hobekuntzak = [
 ];
 
 // Aldagai globalak
-let clickKontagailua = 0;
+let clickKontagailua = 5000;
 let autoClickerCount = 0;
 
 // HTML elementuak
 let madrid = document.getElementById('madrid');
 let counter = document.getElementById('counter');
 let clickSpeed = document.getElementById('speed');
+
+//Boosters
+let blueBoosters = document.getElementById('arrow-blue');
+let greenBoosters = document.getElementById('arrow-green');
+let candyBoosters = document.getElementById('arrow-candy');
 
 // Funtzioa kontagailua eguneratzeko
 function eguneratuKontagailua() {
@@ -51,14 +56,37 @@ function eguneratuHobekuntzak() {
         document.getElementById(`${objetua.name}-value`).innerText = `${objetua.cost}€`;
         
         // Botoia desgaitu edo gaitzea
-        document.getElementById(objetua.name).disabled = clickKontagailua < objetua.cost;
-            //console.log(clickKontagailua < objetua.cost)
+        document.getElementById(objetua.name).disabled = clickKontagailua < objetua.cost; // true / false
+        //console.log(clickKontagailua < objetua.cost)
+        
+        // Boosters enable / disable
+        if(objetua.name == 'penalty' && objetua.count >= 10){
+            //boosterCount -= 10; TO DO!!!
+            
+            document.getElementById("arrow-blue").disabled = false;
+            console.log("Sartu")
+        }
+        else{
+            document.getElementById("arrow-blue").disabled = true;
+        }
+        if(objetua.name == 'var' && objetua.count > 5){
+            document.getElementById("arrow-green").disabled = false;
+        }
+        else{
+            document.getElementById("arrow-green").disabled = true;
+        }
+        if(objetua.name == 'laLiga' && objetua.count > 5){
+            document.getElementById("arrow-candy").disabled = false;
+        }
+        else{
+            document.getElementById("arrow-candy").disabled = true;
+        }
     });
 }
 
 // Erosketa botoiak klikatzeko funtzioak sortu
 hobekuntzak.forEach(objetua => {
-    document.getElementById(objetua.name).addEventListener('click', () => objetua.buy());
+    document.getElementById(objetua.name).addEventListener('click', () => objetua.erosi());
 });
 
 // Elementuak dokumentuan kargatzean
@@ -96,5 +124,31 @@ function startAutoClicker() {
     }, 1000);
 }
 
-// AutoClicker martxan jartzen da
+
+blueBoosters.addEventListener('click', ()=>{
+    let clickBoost = 2;
+    setTimeout(() => {
+        clickKontagailua += clickBoost;
+        console.log(clickKontagailua);
+    }, 30000); // 30 segundu
+});
+
+greenBoosters.addEventListener('click', ()=>{
+    let clickBoost = 3;
+    setTimeout(() => {
+        clickKontagailua += clickBoost;
+        console.log(clickKontagailua);
+    }, 30000);
+
+});
+
+candyBoosters.addEventListener('click', ()=>{
+    let clickBoost = 5;
+    setTimeout(() => {
+        clickKontagailua += clickBoost;
+        console.log(clickKontagailua);
+    }, 30000);
+
+});
+
 startAutoClicker();
