@@ -40,6 +40,7 @@ body{
 
 #click-info{
     width: 100%;
+    margin-top: -10%;
     background: rgba(0, 0, 0, 0.75);
     display: flex;
     flex-direction: column;
@@ -66,8 +67,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 5%;
     border-left: 5px solid black;
+    border-right: 5px solid black;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 #info-box div{
@@ -85,8 +88,6 @@ body{
 
 #shop-box{
     width: 33.3%;
-    margin-left: 5%;
-    border-left: 5px solid black;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -117,6 +118,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 #boosters button{
@@ -124,6 +126,10 @@ body{
     justify-content: space-around;
     margin-top: 2%;
     max-width: 30%;
+}
+
+#arrow-gold{
+    min-width: 40%;
 }
 
 /*
@@ -138,3 +144,4 @@ body{
     align-items: center;
     justify-content: center;
 }
+

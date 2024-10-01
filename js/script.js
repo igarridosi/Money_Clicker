@@ -30,8 +30,9 @@ let hobekuntzak = [
 ];
 
 // Aldagai globalak
-let clickKontagailua = 5000;
+let clickKontagailua = 10000;
 let autoClickerCount = 0;
+let clickBoost = 1;
 
 // HTML elementuak
 let madrid = document.getElementById('madrid');
@@ -58,28 +59,23 @@ function eguneratuHobekuntzak() {
         // Botoia desgaitu edo gaitzea
         document.getElementById(objetua.name).disabled = clickKontagailua < objetua.cost; // true / false
         //console.log(clickKontagailua < objetua.cost)
-        
-        // Boosters enable / disable
-        if(objetua.name == 'penalty' && objetua.count >= 10){
-            //boosterCount -= 10; TO DO!!!
-            
-            document.getElementById("arrow-blue").disabled = false;
-            console.log("Sartu")
+
+        if (hobekuntzak.find(obj => obj.name === 'penalty').count >= 10) {
+            blueBoosters.disabled = false;
+        } else {
+            blueBoosters.disabled = true;
         }
-        else{
-            document.getElementById("arrow-blue").disabled = true;
+    
+        if (hobekuntzak.find(obj => obj.name === 'var').count >= 5) {
+            greenBoosters.disabled = false;
+        } else {
+            greenBoosters.disabled = true;
         }
-        if(objetua.name == 'var' && objetua.count > 5){
-            document.getElementById("arrow-green").disabled = false;
-        }
-        else{
-            document.getElementById("arrow-green").disabled = true;
-        }
-        if(objetua.name == 'laLiga' && objetua.count > 5){
-            document.getElementById("arrow-candy").disabled = false;
-        }
-        else{
-            document.getElementById("arrow-candy").disabled = true;
+    
+        if (hobekuntzak.find(obj => obj.name === 'laLiga').count >= 3) {
+            candyBoosters.disabled = false;
+        } else {
+            candyBoosters.disabled = true;
         }
     });
 }
@@ -100,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Madrid elementuan klik egitean dirua gehitzea
 madrid.addEventListener('click', () => {
-    clickKontagailua++;
+    clickKontagailua += clickBoost;
     eguneratuKontagailua();
     eguneratuHobekuntzak();
 });
@@ -125,30 +121,50 @@ function startAutoClicker() {
 }
 
 
-blueBoosters.addEventListener('click', ()=>{
-    let clickBoost = 2;
-    setTimeout(() => {
-        clickKontagailua += clickBoost;
-        console.log(clickKontagailua);
-    }, 30000); // 30 segundu
+// Booster botoien funtzionamendua
+blueBoosters.addEventListener('click', () => {
+    activateClickBoost(2, 30000, 'blue');
 });
 
-greenBoosters.addEventListener('click', ()=>{
-    let clickBoost = 3;
-    setTimeout(() => {
-        clickKontagailua += clickBoost;
-        console.log(clickKontagailua);
-    }, 30000);
-
+greenBoosters.addEventListener('click', () => {
+    activateClickBoost(3, 45000, 'green');
 });
 
-candyBoosters.addEventListener('click', ()=>{
-    let clickBoost = 5;
-    setTimeout(() => {
-        clickKontagailua += clickBoost;
-        console.log(clickKontagailua);
-    }, 30000);
-
+candyBoosters.addEventListener('click', () => {
+    activateClickBoost(5, 100000, 'candy');
 });
+
+
+function activateClickBoost(multiplier, duration, color) {
+    clickBoost = multiplier;
+    setCursor(color);
+
+    setTimeout(() => {
+        clickBoost = 1;
+        document.body.style.cursor = 'auto';
+        document.getElementById("arrow-"+color).style.display = "none";
+    }, duration);
+}
 
 startAutoClicker();
+
+
+function setCursor(color) {
+    let cursorUrl = '';
+
+    switch (color) {
+        case 'green':
+        cursorUrl = './img/arrow-green.png';
+        break;
+
+        case 'blue':
+        cursorUrl = './img/arrow-blue.png';
+        break;
+
+        case 'candy':
+        cursorUrl = './img/arrow-candy.png';
+        break;
+    }
+
+    document.body.style.cursor = `url(${cursorUrl}), auto`;
+}
