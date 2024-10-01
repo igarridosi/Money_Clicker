@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Clicker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-box">
+        <div id="clicker-box">
+            <h1>Money Clicker</h1>
+            <div id="object-box">
+                <div id="click-info">
+                    <div id="counter">Money amount: 0€</div>
+                    <div id="speed">Per second: 0</div>
+                </div>
+                <img src="img/escudo-madrid.png" alt="" id="madrid" onmouseover="mouseOver()" onmouseleave="mouseLeave()">
+            </div>
+        </div>
+        <div id="info-box">
+            <h2>Items bought:</h2>
+            <div id="penaltyField"></div>
+            <div id="refereeField"></div>
+            <div id="varField"></div>
+            <div id="laLigaField"></div>
+            <div id="championsField"></div>
+        </div>
+        <div id="shop-box">
+            <h1>Store</h1>
+            <div id="shop-items">
+                <button id="penalti" disabled onclick="penaltiClick()">
+                    <img src="img/penalti.png" alt="">
+                    <h3 id="penalti-value">20€</h3>
+                    <h2>Penalty</h2>
+                </button>
+                <button id="referee" disabled onclick="refereeClick()">
+                    <img src="img/arbitro.png" alt="">
+                    <h3 id="referee-value">100€</h3>
+                    <h2>Referee</h2>
+                </button>
+                <button id="var" disabled onclick="varClick()">
+                    <img src="img/var.png" alt="">
+                    <h3 id="var-value">300€</h3>
+                    <h2>VAR</h2>
+                </button>
+                <button id="laLiga" disabled onclick="laLigaClick()">
+                    <img src="img/laliga.png" alt="">
+                    <h3 id="laliga-value">1000€</h3>
+                    <h2>La Liga</h2>
+                </button>
+                <button id="champions" disabled onclick="championsClick()">
+                    <img src="img/champions.png" alt="">
+                    <h3 id="champions-value">5000€</h3>
+                    <h2>Champions</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

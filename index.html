@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Clicker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-box">
+        <div id="clicker-box">
+            <h1>Money Clicker</h1>
+            <div id="object-box">
+                <div id="click-info">
+                    <div id="counter">Money amount: 0€</div>
+                    <div id="speed">Per second: 0</div>
+                </div>
+                <img src="img/escudo-madrid.png" alt="" id="madrid" onmouseover="mouseOver()" onmouseleave="mouseLeave()">
+            </div>
+        </div>
+        <div id="info-box">
+            <h2>Items bought:</h2>
+            <div id="penaltyField"></div>
+            <div id="refereeField"></div>
+            <div id="varField"></div>
+            <div id="laLigaField"></div>
+            <div id="championsField"></div>
+        </div>
+        <div id="shop-box">
+            <h1>Store</h1>
+            <div id="shop-items">
+                <button id="penalty" disabled>
+                    <img src="img/penalty.png" alt="">
+                    <h3 id="penalty-value">20€</h3>
+                    <h2>Penalty</h2>
+                </button>
+                <button id="referee" disabled>
+                    <img src="img/referee.png" alt="">
+                    <h3 id="referee-value">100€</h3>
+                    <h2>Referee</h2>
+                </button>
+                <button id="var" disabled>
+                    <img src="img/var.png" alt="">
+                    <h3 id="var-value">300€</h3>
+                    <h2>VAR</h2>
+                </button>
+                <button id="laLiga" disabled>
+                    <img src="img/laliga.png" alt="">
+                    <h3 id="laLiga-value">1000€</h3>
+                    <h2>La Liga</h2>
+                </button>
+                <button id="champions" disabled>
+                    <img src="img/champions.png" alt="">
+                    <h3 id="champions-value">5000€</h3>
+                    <h2>Champions</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
