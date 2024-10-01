@@ -1,5 +1,5 @@
 // Objektuak definitzen dira hobekuntzak gordetzeko
-class Improvement {
+class Objetua {
     constructor(name, cost, production) {
         this.name = name;
         this.cost = cost;
@@ -20,13 +20,13 @@ class Improvement {
     }
 }
 
-// Hobekuntzen array bat definitzen da
-let improvements = [
-    new Improvement('penalty', 20, 0.1),
-    new Improvement('referee', 100, 0.5),
-    new Improvement('var', 300, 1),
-    new Improvement('laLiga', 1000, 2.5),
-    new Improvement('champions', 5000, 5),
+// Hobekuntzen array-a definitu
+let hobekuntzak = [
+    new Objetua('penalty', 20, 0.1),
+    new Objetua('referee', 100, 0.5),
+    new Objetua('var', 300, 1),
+    new Objetua('laLiga', 1000, 2.5),
+    new Objetua('champions', 5000, 5),
 ];
 
 // Aldagai globalak
@@ -46,25 +46,25 @@ function eguneratuKontagailua() {
 
 // Funtzioa hobekuntzak eguneratzeko
 function eguneratuHobekuntzak() {
-    improvements.forEach(improvement => {
-        document.getElementById(`${improvement.name}Field`).innerHTML = `<div> <img src='img/${improvement.name}.png'> <h3>${improvement.count}</h3> </div>`;
-            document.getElementById(`${improvement.name}-value`).innerText = `${improvement.cost}€`;
+    hobekuntzak.forEach(objetua => {
+        document.getElementById(`${objetua.name}Field`).innerHTML = `<div> <img src='img/${objetua.name}.png'> <h3>${objetua.count}</h3> </div>`;
+        document.getElementById(`${objetua.name}-value`).innerText = `${objetua.cost}€`;
         
         // Botoia desgaitu edo gaitzea
-        document.getElementById(improvement.name).disabled = clickKontagailua < improvement.cost;
-        console.log(clickKontagailua < improvement.cost)
+        document.getElementById(objetua.name).disabled = clickKontagailua < objetua.cost;
+            //console.log(clickKontagailua < objetua.cost)
     });
 }
 
 // Erosketa botoiak klikatzeko funtzioak sortu
-improvements.forEach(improvement => {
-    document.getElementById(improvement.name).addEventListener('click', () => improvement.buy());
+hobekuntzak.forEach(objetua => {
+    document.getElementById(objetua.name).addEventListener('click', () => objetua.buy());
 });
 
 // Elementuak dokumentuan kargatzean
 document.addEventListener("DOMContentLoaded", () => {
-    improvements.forEach(improvement => {
-        document.getElementById(improvement.name).disabled = true;
+    hobekuntzak.forEach(objetua => {
+        document.getElementById(objetua.name).disabled = true;
     });
     eguneratuKontagailua();
     eguneratuHobekuntzak();
