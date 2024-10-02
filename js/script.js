@@ -43,6 +43,7 @@ let clickSpeed = document.getElementById('speed');
 let blueBoosters = document.getElementById('arrow-blue');
 let greenBoosters = document.getElementById('arrow-green');
 let candyBoosters = document.getElementById('arrow-candy');
+let goldBooster = document.getElementById('arrow-gold');
 
 // Funtzioa kontagailua eguneratzeko
 function eguneratuKontagailua() {
@@ -77,6 +78,12 @@ function eguneratuHobekuntzak() {
         } else {
             candyBoosters.disabled = true;
         }
+
+        if (hobekuntzak.find(obj => obj.name === 'champions').count >= 1) {
+            goldBooster.disabled = false;
+        } else {
+            goldBooster.disabled = true;
+        }
     });
 }
 
@@ -101,7 +108,7 @@ madrid.addEventListener('click', () => {
     eguneratuHobekuntzak();
 });
 
-
+/*
 function mouseOver() {
     madrid.style.maxWidth = "45%";
 }
@@ -109,6 +116,7 @@ function mouseOver() {
 function mouseLeave() {
     madrid.style.maxWidth = "40%";
 }
+    */
 
 // AutoClicker funtzioa hasten da
 function startAutoClicker() {
@@ -123,15 +131,19 @@ function startAutoClicker() {
 
 // Booster botoien funtzionamendua
 blueBoosters.addEventListener('click', () => {
-    activateClickBoost(2, 30000, 'blue');
+    activateClickBoost(2, 20000, 'blue');
 });
 
 greenBoosters.addEventListener('click', () => {
-    activateClickBoost(3, 45000, 'green');
+    activateClickBoost(3, 20000, 'green');
 });
 
 candyBoosters.addEventListener('click', () => {
-    activateClickBoost(5, 100000, 'candy');
+    activateClickBoost(5, 45000, 'candy');
+});
+
+goldBooster.addEventListener('click', () => {
+    activateClickBoost(10, 30000, 'gold');
 });
 
 
@@ -163,6 +175,10 @@ function setCursor(color) {
 
         case 'candy':
         cursorUrl = './img/arrow-candy.png';
+        break;
+
+        case 'gold':
+        cursorUrl = './img/arrow-yellow.png';
         break;
     }
 
