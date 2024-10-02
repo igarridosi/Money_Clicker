@@ -30,7 +30,7 @@ let hobekuntzak = [
 ];
 
 // Aldagai globalak
-let clickKontagailua = 10000;
+let clickKontagailua = 0;
 let autoClickerCount = 0;
 let clickBoost = 1;
 
@@ -54,7 +54,7 @@ function eguneratuKontagailua() {
 // Funtzioa hobekuntzak eguneratzeko
 function eguneratuHobekuntzak() {
     hobekuntzak.forEach(objetua => {
-        document.getElementById(`${objetua.name}Field`).innerHTML = `<div> <img src='img/${objetua.name}.png'> <h3>${objetua.count}</h3> </div>`;
+        document.getElementById(`${objetua.name}Field`).innerHTML = `<div> <img src='img/${objetua.name}.png'> <h3>+ ${objetua.production}€/s</h3> <h3>${objetua.count}</h3> </div>`;
         document.getElementById(`${objetua.name}-value`).innerText = `${objetua.cost}€`;
         
         // Botoia desgaitu edo gaitzea

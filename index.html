@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Clicker</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="game-box">
@@ -20,12 +23,26 @@
             </div>
         </div>
         <div id="info-box">
-            <h2>Items bought:</h2>
-            <div id="penaltyField"></div>
-            <div id="refereeField"></div>
-            <div id="varField"></div>
-            <div id="laLigaField"></div>
-            <div id="championsField"></div>
+            <h1>Items bought</h1>
+            <div id="itemsField">
+                <div id="penaltyField"></div>
+                <div id="refereeField"></div>
+                <div id="varField"></div>
+                <div id="laLigaField"></div>
+                <div id="championsField"></div>
+            </div>
+
+
+            <div id="boostInfo">
+                <h1>Boosters Requirements</h1>
+                <div>
+                    <h2>10 Penalti = +2€/click -> 20s</h2>
+                    <h2>5 Var = +3€/click -> 20s</h2>
+                    <h2>3 Liga = +5€/click -> 45s</h2>
+                    <h2>1 Champions = +10€/click -> 30s</h2>
+                </div>
+            </div>
+
         </div>
         <div id="shop-box">
             <h1>Store</h1>
@@ -76,15 +93,6 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="boostInfo">
-        <h1>Boosters Requirements</h1>
-        <div>
-            <h2>10 Penalti = X2 20s</h2>
-            <h2>5 Var = X3 20s</h2>
-            <h2>3 Liga = X5 45s</h2>
-            <h2>1 Champions = X10 30s</h2>
         </div>
     </div>
     <script src="js/script.js"></script>
