@@ -48,7 +48,7 @@ let goldBooster = document.getElementById('arrow-gold');
 // Funtzioa kontagailua eguneratzeko
 function eguneratuKontagailua() {
     counter.innerText = `Money amount: ${clickKontagailua.toFixed(1)}€`;
-    clickSpeed.innerText = `Per second: ${autoClickerCount.toFixed(1)}`;
+    clickSpeed.innerText = `Per second: ${autoClickerCount.toFixed(1)}€`;
 }
 
 // Funtzioa hobekuntzak eguneratzeko
@@ -97,8 +97,40 @@ document.addEventListener("DOMContentLoaded", () => {
     hobekuntzak.forEach(objetua => {
         document.getElementById(objetua.name).disabled = true;
     });
+
+    const startButton = document.getElementById('start-button');
+    const startWindow = document.getElementById('start-window');
+    const gameBox = document.getElementById('game-box');
+
+    // Add click event listener to the start button
+    startButton.addEventListener('click', () => {
+        startWindow.style.display = 'none'; // Hide the start window
+        gameBox.style.display = 'flex'; // Show the game box
+    });
+
     eguneratuKontagailua();
     eguneratuHobekuntzak();
+
+
+    const holdButton = document.getElementById('start-button');
+    let holdTimeout;
+    let holdDuration = 100; 
+
+
+    holdButton.addEventListener('mouseenter', () => {
+        holdTimeout = setTimeout(() => {
+            document.getElementById('start-window').style.backgroundColor = "#4b5f3a";
+            document.getElementById('start-content').style.color = "white";
+
+        }, holdDuration);
+    });
+
+
+    holdButton.addEventListener('mouseleave', () => {
+        clearTimeout(holdTimeout);
+        document.getElementById('start-window').style.backgroundColor = "white";
+        document.getElementById('start-content').style.color = "#4b5f3a";
+    });
 });
 
 // Madrid elementuan klik egitean dirua gehitzea
@@ -107,16 +139,6 @@ madrid.addEventListener('click', () => {
     eguneratuKontagailua();
     eguneratuHobekuntzak();
 });
-
-/*
-function mouseOver() {
-    madrid.style.maxWidth = "45%";
-}
-
-function mouseLeave() {
-    madrid.style.maxWidth = "40%";
-}
-    */
 
 // AutoClicker funtzioa hasten da
 function startAutoClicker() {
@@ -184,3 +206,6 @@ function setCursor(color) {
 
     document.body.style.cursor = `url(${cursorUrl}), auto`;
 }
+
+
+
